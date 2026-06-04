@@ -10,9 +10,64 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
       rel="stylesheet"
     />
+    <style>
+      #boot-error {
+        display: none;
+        max-width: 42rem;
+        margin: 4rem auto;
+        padding: 2rem;
+        font-family: Georgia, serif;
+        background: #1a1612;
+        color: #f5f0e8;
+        border: 1px solid rgba(255, 107, 0, 0.35);
+        border-radius: 4px;
+        line-height: 1.6;
+      }
+      #boot-error code {
+        font-family: "IBM Plex Mono", monospace;
+        background: rgba(255, 107, 0, 0.12);
+        padding: 0.15rem 0.4rem;
+        border-radius: 2px;
+      }
+      #boot-error h1 {
+        font-size: 1.35rem;
+        margin-bottom: 0.75rem;
+        color: #ff6b00;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <div id="boot-error" role="alert">
+      <h1>YC Almanac needs a dev or production server</h1>
+      <p>
+        This project uses Vite + React. A <code>text/jsx</code> MIME error means your host
+        is serving source files instead of the built site. On <strong>Cloudflare Pages</strong>,
+        set the build command to <code>npm run build</code> and the output directory to
+        <code>dist</code>, then retry the deployment.
+      </p>
+      <p>For local development:</p>
+      <p><code>npm install && npm run dev</code></p>
+
+    </div>
+    <script>
+      window.__ycAlmanacBoot = { ok: false };
+      window.addEventListener("error", function (event) {
+        if (
+          event.message &&
+          (event.message.includes("MIME type") ||
+            event.message.includes("main.jsx") ||
+            event.message.includes("module script"))
+        ) {
+          document.getElementById("boot-error").style.display = "block";
+        }
+      });
+      setTimeout(function () {
+        if (!window.__ycAlmanacBoot.ok) {
+          document.getElementById("boot-error").style.display = "block";
+        }
+      }, 2500);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
