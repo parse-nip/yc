@@ -1,0 +1,21 @@
+{
+  "name": "yc-almanac",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "process-data": "node scripts/process-yc-data.mjs",
+    "dev": "npm run process-data && vite",
+    "build": "npm run process-data && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "recharts": "^2.15.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
+    "vite": "^6.3.5"
+  }
+}
